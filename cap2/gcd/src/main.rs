@@ -1,5 +1,30 @@
+use std::env;
+use std::str::FromStr;
+
 fn main() {
-    println!("GCD: {}", gcd(27, 6))
+    let mut numbers = Vec::new();
+
+    let args: Vec<String> = env::args().collect();
+
+    if let Some(first) = args.first() {
+        println!("Primeiro argumento: {}", first);
+    }
+
+    for arg in env::args().skip(1) {
+        numbers.push(u64::from_str(&arg).expect("Error parsing argument"));
+    }
+
+    if numbers.len() == 0 {
+        eprint!("Usage: gcd NUMBER ...");
+        std::process::exit(1);
+    }
+
+    let mut d = numbers[0];
+    for m in &numbers[1..] {
+        d = gcd(d, *m);
+    }
+
+    println!("The greates common divisor of {:?} is {}", numbers, d);
 }
 
 fn gcd(mut n: u64, mut m: u64) -> u64 {
