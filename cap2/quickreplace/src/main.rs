@@ -1,5 +1,6 @@
 use std::{env, fs, process::exit};
 
+use regex::Regex;
 use text_colorizer::Colorize;
 
 fn main() {
@@ -18,7 +19,15 @@ fn main() {
         }
     };
 
-    match fs::write(&args.output, &data) {
+    let replace_data = match replace(&args.target, &args.replacement, &data) {
+        Ok(v) => v,
+        Err(e) => {
+            eprintln!("{} failed to replace text: {:?}", "Error:".red().bold(), e);
+            exit(1);
+        }
+    };
+
+    match fs::write(&args.output, &replace_data) {
         Ok(_) => {}
         Err(e) => {
             eprintln!(
@@ -45,7 +54,10 @@ fn print_usage() {
         "{} - change occurences of one string into another",
         "quickreplace".green()
     );
-    eprintln!("Usage: quickreplace <target> <replacement> <INPUT> <OUTPUT>");
+    eprintln!(
+        "{} quickreplace <target> <replacement> <INPUT> <OUTPUT>",
+        "Usage:".yellow().bold()
+    );
 }
 
 fn parse_args() -> Arguments {
@@ -67,4 +79,9 @@ fn parse_args() -> Arguments {
         filename: args[2].clone(),
         output: args[3].clone(),
     }
+}
+
+fn replace(target: &str, replacement: &str, text: &str) -> Result<String, regex::Error> {
+    let regex = Regex::new(target)?;
+    Ok(regex.replace_all(text, replacement).to_string())
 }
