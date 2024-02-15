@@ -1,7 +1,9 @@
-[package]
-name = "programacao_rust"
-version = "0.1.0"
-edition = "2021"
-
 [workspace]
-members = ["rust_examples"]
+members = [
+    "cap2/actix-gcd",
+    "cap2/gcd",
+    "cap2/hello",
+    "cap2/mandelbrot",
+    "cap2/quickreplace",
+    "cap4/rust_examples",
+]
