@@ -1,0 +1,7 @@
+[package]
+name = "cap2"
+version = "0.1.0"
+edition = "2021"
+
+[workspace]
+members = ["actix-gcd", "gcd", "hello", "mandelbrot", "quickreplace"]
