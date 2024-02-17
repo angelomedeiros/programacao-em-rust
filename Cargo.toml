@@ -4,6 +4,6 @@ members = [
     "cap2/gcd",
     "cap2/hello",
     "cap2/mandelbrot",
-    "cap2/quickreplace",
+    "cap2/quickreplace", "cap4/ownership",
     "cap4/rust_examples",
 ]
