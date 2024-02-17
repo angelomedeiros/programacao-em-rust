@@ -1,34 +1,4 @@
 fn main() {
-    // let name = "angelo"; // &str
-    // let name = name.to_string(); // String
-    // let name = name.as_str(); // &str
-
-    // println!("{}", name.replace("a", "A")); // String
-
-    // let mut s = "angelo".to_string(); // String
-    // s.push_str(" medeiros"); // String
-
-    // println!("{}", s);
-
-    // let mut s = vec!["joao".to_string(), "maria".to_string(), "jose".to_string()];
-
-    // if s[0].len() == 3 {
-    //     dbg(s);
-    //     s = [].to_vec(); // caso nao seja "inicializado" novamente ocorrera erro depois do if
-    // } else {
-    //     dbg(s);
-    //     s = [].to_vec(); // caso nao seja "inicializado" novamente ocorrera erro depois do if
-    // }
-
-    // dbg(s); // nao aprensenta erro pois s foi inicializado novamente dentro do if
-
-    // let v = vec!["joao".to_string(), "maria".to_string(), "jose".to_string()];
-
-    // for mut i in v {
-    //     i.push('!');
-    //     println!("{}", i);
-    // }
-
     // #[derive(Debug)]
     // struct Person {
     //     name: Option<String>,
@@ -60,12 +30,6 @@ fn main() {
     // println!("{:?}", method);
 
     play_with_strings();
-}
-
-fn dbg<T: std::fmt::Debug>(s: Vec<T>) {
-    println!("==== Value ====");
-    dbg!(s);
-    println!("==== End ====");
 }
 
 fn play_with_strings() {
