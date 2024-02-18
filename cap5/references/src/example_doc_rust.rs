@@ -10,14 +10,14 @@ pub fn example_doc_rust() {
 
         &s[..]
     }
-    let mut s = String::from("hello world");
+    let s = String::from("hello world");
     // let hello = &s[0..5];
     // let world = &s[6..];
 
     let word = first_word(&s[0..6]);
     println!("{}", &s[..]);
 
-    // s.push('!'); // error!
+    // s.push('!'); // error! mesmo se s for mut
 
     println!("the first word is: {}", word);
 }
