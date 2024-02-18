@@ -1,4 +1,8 @@
 fn main() {
+    example_doc_rust();
+}
+
+fn example_doc_rust() {
     let mut s = String::from("hello world");
     // let hello = &s[0..5];
     // let world = &s[6..];
