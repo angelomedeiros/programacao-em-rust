@@ -1,3 +1,14 @@
+struct Person {
+    age: i32,
+    name: Option<String>,
+}
+
+#[derive(Copy, Clone)]
+struct Car {
+    max_vel: i16,
+    is_eletric: bool,
+}
+
 fn main() {
     let point = Box::new((0.625, 0.5));
     let label = format!("{:?}", point);
@@ -60,17 +71,36 @@ fn main() {
         println!("{}", s);
     }
 
-    struct Person {
-        name: Option<String>,
-        age: i32,
-    }
-
     let mut composers = Vec::new();
-    composers.push(Person {
+    let person1 = Person {
         age: 28,
         name: Some("Angelo".to_string()),
-    });
+    };
 
-    let first_name = composers[0].name.take(); // o mesmo que replace(&mut composers[0].name, None)
+    composers.push(person1);
+
+    let first_name = std::mem::replace(&mut composers[0].name, None);
+    let fisrt_age = composers[0].age;
+
     dbg!(first_name.expect("empty value"));
+    dbg!(fisrt_age);
+
+    let car = Car {
+        max_vel: 250,
+        is_eletric: true,
+    };
+
+    print_age(car);
+    /*
+       Na chamada abaixo de car.max_val se o struct nao tiver marcado como #[derive(Copy, Clone)]
+       vai dar erro, pois um struct por padrao nao tipo copy, mas add #[derive(Copy, Clone)], e
+       isso só é possível se todos os valores forem do tipo copy, que é esse o caso pois todos os
+       tipos do struct (i16, bool) são do tipo copy
+    */
+    println!("{}", car.max_vel);
+}
+
+fn print_age(car: Car) {
+    println!("Max vel: {}km/h", car.max_vel);
+    println!("Max vel: {}km/h", car.is_eletric);
 }
