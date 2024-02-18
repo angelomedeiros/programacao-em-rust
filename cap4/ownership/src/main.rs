@@ -1,3 +1,5 @@
+use std::rc::Rc;
+
 struct Person {
     age: i32,
     name: Option<String>,
@@ -90,7 +92,7 @@ fn main() {
         is_eletric: true,
     };
 
-    print_age(car);
+    print_car(car);
     /*
        Na chamada abaixo de car.max_val se o struct nao tiver marcado como #[derive(Copy, Clone)]
        vai dar erro, pois um struct por padrao nao tipo copy, mas add #[derive(Copy, Clone)], e
@@ -98,9 +100,17 @@ fn main() {
        tipos do struct (i16, bool) são do tipo copy
     */
     println!("{}", car.max_vel);
+
+    let s = Rc::new("Angelo".to_string());
+    let t = s.clone();
+    let u = s.clone();
+
+    println!("s: {}", s);
+    println!("t: {}", t);
+    println!("u: {}", u);
 }
 
-fn print_age(car: Car) {
+fn print_car(car: Car) {
     println!("Max vel: {}km/h", car.max_vel);
-    println!("Max vel: {}km/h", car.is_eletric);
+    println!("Is eletric: {}", car.is_eletric);
 }
