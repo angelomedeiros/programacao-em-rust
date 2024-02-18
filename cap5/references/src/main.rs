@@ -1,28 +1,10 @@
+mod example_doc_rust;
+mod references_to_values;
+
+use example_doc_rust::example_doc_rust;
+use references_to_values::references_to_values;
+
 fn main() {
     example_doc_rust();
-}
-
-fn example_doc_rust() {
-    let mut s = String::from("hello world");
-    // let hello = &s[0..5];
-    // let world = &s[6..];
-
-    let word = first_word(&s[0..6]);
-    println!("{}", &s[..]);
-
-    // s.push('!'); // error!
-
-    println!("the first word is: {}", word);
-}
-
-fn first_word(s: &str) -> &str {
-    let bytes = s.as_bytes();
-
-    for (i, &item) in bytes.iter().enumerate() {
-        if item == b' ' {
-            return &s[0..i];
-        }
-    }
-
-    &s[..]
+    references_to_values();
 }
