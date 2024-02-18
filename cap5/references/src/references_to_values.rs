@@ -1,5 +1,7 @@
 use std::collections::HashMap;
 
+type Table = HashMap<String, Vec<String>>;
+
 pub fn references_to_values() {
     let mut table = HashMap::new();
     table.insert(
@@ -18,7 +20,7 @@ pub fn references_to_values() {
     show(table);
 }
 
-fn show(table: HashMap<String, Vec<String>>) {
+fn show(table: Table) {
     for (artist, works) in table {
         println!("works by {}:", artist);
         for work in works {
