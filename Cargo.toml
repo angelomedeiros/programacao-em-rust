@@ -5,5 +5,5 @@ members = [
     "cap2/hello",
     "cap2/mandelbrot",
     "cap2/quickreplace", "cap4/ownership",
-    "cap4/rust_examples",
+    "cap4/rust_examples", "cap5/references",
 ]
