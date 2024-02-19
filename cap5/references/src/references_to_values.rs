@@ -17,7 +17,8 @@ pub fn references_to_values() {
         ],
     );
 
-    show(table);
+    // show(table);
+    assert_eq!(table["Angelo"][0], "Medeiros");
 }
 
 fn show(table: Table) {
