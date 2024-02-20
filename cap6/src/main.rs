@@ -45,4 +45,15 @@ fn main() {
     };
 
     println!("Suggested car: {}", suggested_car);
+
+    // Loops
+    for i in 0..5 {
+        println!("i: {}", i); // 0, 1, ..., 4
+    }
+
+    let range = std::ops::Range { start: 0, end: 5 };
+
+    for i in range {
+        println!("i: {}", i); // 0, 1, ..., 4
+    }
 }
