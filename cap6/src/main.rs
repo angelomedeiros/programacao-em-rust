@@ -24,5 +24,14 @@ fn main() {
 
     show_files();
 
-    //
+    let code = 0;
+
+    // Switch
+    let message = match code {
+        0 => "Ok".to_string(),
+        1 => "Wires Tangled".to_string(),
+        _ => "Unkown".to_string(), // The _ is the default operator
+    };
+
+    println!("Message: {}", message);
 }
