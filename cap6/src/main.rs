@@ -34,4 +34,15 @@ fn main() {
     };
 
     println!("Message: {}", message);
+
+    // Ifs
+    let suggested_car = if code == 0 {
+        "Fiat uno".to_string()
+    } else if code == 1 {
+        "BMW".to_string()
+    } else {
+        "Unkown".to_string()
+    };
+
+    println!("Suggested car: {}", suggested_car);
 }
