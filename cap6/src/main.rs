@@ -56,4 +56,19 @@ fn main() {
     for i in range {
         println!("i: {}", i); // 0, 1, ..., 4
     }
+
+    // Flow control
+    let range: Vec<usize> = (1..10).collect();
+
+    'flowcontrol: for i in &range {
+        for j in &range {
+            if i == &(range.len()) {
+                print!("END!");
+                break 'flowcontrol;
+            } else {
+                print!("{}:{} ", i, j);
+            }
+        }
+        print!("...\n");
+    }
 }
