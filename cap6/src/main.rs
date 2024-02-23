@@ -58,7 +58,7 @@ fn main() {
     }
 
     // Flow control
-    let range: Vec<usize> = (1..10).collect();
+    let range: Vec<usize> = (1..=10).collect();
 
     'flowcontrol: for i in &range {
         for j in &range {
