@@ -1,6 +1,6 @@
 use std::error::Error;
-use std::fs::File;
-use std::io::{stderr, ErrorKind, Read, Write};
+use std::fs::{File, OpenOptions};
+use std::io::{stderr, ErrorKind, Read, Seek, SeekFrom, Write};
 use std::{fmt, io};
 
 fn main() {
@@ -38,9 +38,18 @@ fn main() {
 
     println!("{:?}", contents);
 
-    let _ = File::open("hells.txt").expect("hello.txt should be included in this project");
+    let _ = File::open("hell.txt").expect("hello.txt should be included in this project");
 
     let _ = read_username_from_file();
+
+    let _ = read_username_from_file_short();
+
+    let file = write_username_from_file_short();
+
+    match file {
+        Ok(()) => println!("Ok!"),
+        Err(error) => println!("Error: {}", error),
+    }
 }
 
 fn print_error(mut err: &dyn Error) {
@@ -87,4 +96,26 @@ fn read_username_from_file() -> Result<String, io::Error> {
         Ok(_) => Ok(username),
         Err(e) => Err(e),
     }
+}
+
+fn read_username_from_file_short() -> Result<String, io::Error> {
+    let mut username_file = File::open("hello.txt")?;
+    let mut username = String::new();
+    username_file.read_to_string(&mut username)?;
+    Ok(username)
+}
+
+fn write_username_from_file_short() -> Result<(), io::Error> {
+    let mut username_file = OpenOptions::new()
+        .write(true)
+        .create(true)
+        // .truncate(true)
+        .open("hellos.txt")?;
+
+    username_file.seek(SeekFrom::End(0))?;
+
+    username_file.write_all(b"\n")?;
+
+    username_file.write_all("Angelo Medeiros".as_bytes())?;
+    Ok(())
 }
