@@ -1,7 +1,7 @@
 use std::error::Error;
-use std::fmt;
 use std::fs::File;
 use std::io::{stderr, ErrorKind, Read, Write};
+use std::{fmt, io};
 
 fn main() {
     let err2 = MyError::CustomError("Simulação 2".to_string());
@@ -37,6 +37,10 @@ fn main() {
     let _ = greeting_file.read_to_string(&mut contents);
 
     println!("{:?}", contents);
+
+    let _ = File::open("hells.txt").expect("hello.txt should be included in this project");
+
+    let _ = read_username_from_file();
 }
 
 fn print_error(mut err: &dyn Error) {
@@ -66,5 +70,21 @@ impl Error for MyError {
         match self {
             MyError::CustomError(_) => None,
         }
+    }
+}
+
+fn read_username_from_file() -> Result<String, io::Error> {
+    let username_file_result = File::open("hello.txt");
+
+    let mut username_file = match username_file_result {
+        Ok(file) => file,
+        Err(e) => return Err(e),
+    };
+
+    let mut username = String::new();
+
+    match username_file.read_to_string(&mut username) {
+        Ok(_) => Ok(username),
+        Err(e) => Err(e),
     }
 }
