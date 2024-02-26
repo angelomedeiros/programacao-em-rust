@@ -1,11 +1,19 @@
 use std::error::Error;
 use std::fmt;
+use std::fs::File;
 use std::io::{stderr, Write};
 
 fn main() {
     let err2 = MyError::CustomError("Simulação 2".to_string());
 
     print_error(&err2);
+
+    let greeting_file_result = File::open("hello.txt");
+
+    let greeting_file = match greeting_file_result {
+        Ok(file) => file,
+        Err(error) => panic!("Problem opening the file: {:?}", error),
+    };
 }
 
 fn print_error(mut err: &dyn Error) {
