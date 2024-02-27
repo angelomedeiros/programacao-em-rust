@@ -8,5 +8,7 @@ members = [
     "cap4/ownership",
     "cap4/rust_examples",
     "cap5/references",
-    "cap6", "cap7",
+    "cap6",
+    "cap7",
+    "cap8",
 ]

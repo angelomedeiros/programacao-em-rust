@@ -31,9 +31,9 @@ pub fn different_lifetime_params() {
 
     extend(&mut wave, &head);
     extend(&mut wave, &tail);
-    extend(&mut wave, &wave);
+    // extend(&mut wave, &mut wave);
 
-    assert_eq!(wave, vec![0, 1, 0, 2]);
+    assert_eq!(&wave, &vec![0, 1, 0, 2]);
     dbg!(wave);
 }
 
