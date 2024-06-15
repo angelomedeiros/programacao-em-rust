@@ -1,21 +1,14 @@
 fn bubble_sort(arr: &mut [i32]) {
     let n = arr.len();
 
+    // Percorre todos os elementos do array
     for i in 0..n {
-        // Flag para verificar se houve trocas na iteração atual
-        let mut swapped = false;
-
-        for j in 0..(n - i - 1) {
+        for j in 0..(n - 1 - i) {
             // Compara elementos adjacentes e troca-os se estiverem na ordem errada
             if arr[j] > arr[j + 1] {
+                // Chama nossa própria função de troca
                 swap(arr, j, j + 1);
-                swapped = true;
             }
-        }
-
-        // Se não houve trocas, o array já está ordenado
-        if !swapped {
-            break;
         }
     }
 }
