@@ -10,5 +10,5 @@ members = [
     "cap5/references",
     "cap6",
     "cap7",
-    "cap8",
+    "cap8", "rust_playground",
 ]
