@@ -1,8 +1,6 @@
 use sort::bubble_sort::bubble_sort;
 
-mod sort {
-    pub mod bubble_sort;
-}
+pub mod sort;
 
 fn main() {
     let mut array = [64, 34, 25, 12, 22, 11, 90];
