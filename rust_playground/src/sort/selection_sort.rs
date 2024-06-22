@@ -15,11 +15,26 @@ fn busca_menor(arr: &[i32]) -> usize {
     let mut menor_indice = 0;
 
     for i in 1..arr.len() {
-        if arr[i] < menor {
+        if arr[i] <= menor {
             menor = arr[i];
             menor_indice = i;
         }
     }
 
     return menor_indice;
+}
+
+#[test]
+fn test_selection_sort() {
+    let mut arr = [64, 55, 25, 12, 13, 9, 90, 9];
+    let arr_sorted = selection_sort(&mut arr);
+    println!("Array ordenado pelo selection sort: {:?}", arr_sorted);
+    assert_eq!(arr_sorted, [9, 9, 12, 13, 25, 55, 64, 90]);
+}
+
+#[test]
+fn test_buscar_menor() {
+    let mut arr = [64, 55, 25, 12, 13, 9, 90, 9];
+    let menor = busca_menor(&mut arr);
+    assert_eq!(menor, 7);
 }
